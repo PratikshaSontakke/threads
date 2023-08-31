@@ -7,10 +7,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 
 import Image from 'next/image';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
-import { Input } from '../ui/input';
-import { Textarea } from '../ui/textarea';
-import { Button } from '../ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/Form';
+import { Input } from '../ui/Input';
+import { Textarea } from '../ui/Textarea';
+import { Button } from '../ui/Button';
+
 interface Props {
   user: {
     id: string,
