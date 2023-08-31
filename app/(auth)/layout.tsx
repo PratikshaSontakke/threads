@@ -1,4 +1,5 @@
 import React from "react";
+import '../globals.css'
 import { ClerkProvider } from "@clerk/nextjs"
 import { Inter } from "next/font/google";
 export const metadata ={
