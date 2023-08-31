@@ -3,7 +3,7 @@ import '../globals.css'
 import { ClerkProvider } from "@clerk/nextjs"
 import { Inter } from "next/font/google";
 export const metadata ={
-    title: 'Threads',
+    title: 'ThreadHub',
     description: 'Next.js 13 Application'
 }
 

@@ -11,7 +11,7 @@ import MobileBottombar from '@/components/shared/MobileBottombar'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata ={
-  title: 'Threads',
+  title: 'ThreadHub',
   description: 'Next.js 13 Application'
 }
 
