@@ -9,6 +9,8 @@ import { Button } from '../ui/Button';
 import { usePathname, useRouter } from 'next/navigation';
 import { ThreadValidation } from '@/lib/validation/thread';
 import { Input } from '../ui/Input';
+import { getRandomValues } from 'crypto';
+import { createThread } from '@/lib/actions/thread.actions';
 // import { updateUser } from '@/lib/actions/user.actions';
  
 interface Props {
@@ -36,8 +38,15 @@ function PostThread({userId}:{userId: string}){
       },
     })
 
-    const onSubmit =async()=>{
-        // await createThread()
+    const onSubmit = async(values: z.infer<typeof ThreadValidation>)=>{
+        await createThread({
+            text: values.thread, 
+            author: userId,
+            communityId:null,
+            path:pathname
+         })
+
+         router.push('/')
 
     }
     return (
