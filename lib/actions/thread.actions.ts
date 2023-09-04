@@ -30,3 +30,31 @@ export async function createThread({text, author, communityId, path}:Params){
         throw new Error(`Error creating thread: ${error.message}`)
     }
 }
+
+
+//fetch posts function with pagination
+export async function fetchPosts(pageNumber=1, pageSize=20){
+    connectToDB();
+
+    //calculate the no. of posts to skip
+    const skipAmount = (pageNumber -1) * pageSize
+
+    //fetch the post that have no parents
+    const postQuerty = Thread.find({parentId:{$in: [null, undefined]}})
+    .sort({createdAt:'desc'})
+    .skip(skipAmount)
+    .limit(pageSize)
+    .populate({path: 'author', model:  User})
+    .populate({path:"children",
+    populate: { //consider this as a comment to a thread
+    path: 'author',
+    model:User,
+    select: "_id name patentId image"
+}})
+
+const totalPostsCount = await Thread.countDocuments({parentId:{$in: [null, undefined]}})
+const posts = await postQuerty.exec()
+const isNext = totalPostsCount > skipAmount + posts.length;
+return {posts, isNext}
+
+}
