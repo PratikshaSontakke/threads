@@ -8,7 +8,7 @@ import ThreadsTab from "@/components/shared/ThreadsTab";
 import ProfileHeader from "@/components/shared/ProfileHeader";
 
 import { fetchUser } from "@/lib/actions/user.actions";
-import { Tabs, TabsList, TabsTrigger,TabsContent } from "@/components/ui/Tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 
 async function Page({ params }: { params: { id: string } }) {
   const user = await currentUser();
